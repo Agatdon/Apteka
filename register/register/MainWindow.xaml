@@ -4,40 +4,161 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:register"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Margin="0,-1,0,0" Background="#FF72D3CE">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Imię" Grid.Column="1" Grid.Row="1" Margin="15,15,15,15" FontSize="14"/>
-            <Label Content="Nazwisko" Grid.Column="1" Grid.Row="2" Margin="15,15,15,15" FontSize="14"/>
-            <Label Content="Pesel/ID" Grid.Column="1" Grid.Row="3" Margin="15,15,15,15" FontSize="14"/>
-            <Label Content="Adres e-mail" Grid.Column="1" Grid.Row="4" Margin="15,15,15,15" FontSize="14"/>
-            <Label Content="hasło" Grid.Column="1" Grid.Row="5" Margin="15,15,15,15" FontSize="14"/>
-            <Button Content="Zarejestruj" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="6" Margin="10,10,10,10" Click="Button_Click" Background="#FF25337D" BorderBrush="#FFF3E4E4" Foreground="#FFF2F3F9" FontSize="16"/>
-            <TextBox Margin="20,20,20,20" TextWrapping="Wrap" Grid.Column="2" Grid.Row="1"/>
-            <TextBox Margin="20,20,20,20" TextWrapping="Wrap" Grid.Column="2" Grid.Row="2"/>
-            <TextBox Margin="20,20,20,20" TextWrapping="Wrap" Grid.Column="2" Grid.Row="3"/>
-            <TextBox Margin="20,20,20,20" TextWrapping="Wrap" Grid.Column="2" Grid.Row="4"/>
-            <TextBox Margin="20,20,20,20" TextWrapping="Wrap" Grid.Column="2" Grid.Row="5"/>
-        </Grid>
+        Title="MainWindow" 
+        Height="645" 
+        Width="875"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        FontSize="18"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    
+    <Grid Margin="20">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="30"
+                              ShadowDepth="1"
+                              Opacity="0.4"/>
+        </Grid.Effect>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.22*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- left-->
+        <Border Background="#ff72d3ce"
+                CornerRadius="30 0 0 30"
+                ClipToBounds="True">
+            <Border.Clip>
+                <RectangleGeometry Rect="0,0,400,605"
+                                   RadiusX="10"
+                                   RadiusY="10"/>
+            </Border.Clip>
+            <Grid>
+                <StackPanel Margin="0 120 0 0"
+                        VerticalAlignment="Top">
+                    <TextBlock FontSize="46"
+                           FontWeight="Light"
+                           Text="Zapisz"
+                           Foreground="white"
+                           TextAlignment="Center"/>
+
+                    <TextBlock FontWeight="Light"
+                           FontSize="16"
+                           Foreground="#d1f2eb"
+                           TextAlignment="Center"
+                           Text="to use"
+                           Margin="0 15 0 3"/>
+                    <TextBlock FontSize="16"
+                           FontWeight="Light"
+                           Text="Zapisz"
+                           Foreground="#d1f2eb"
+                           TextAlignment="Center"/>
+
+                </StackPanel>
+                <!-- elipse-->
+                <Ellipse Width="500"
+                     Height="500"
+                     VerticalAlignment="Bottom"
+                     Fill="#5eccb4"
+                     Margin="50 0 0 -200"
+                     Opacity="0.6"/>
+
+                <!-- icon-->
+                <Border Background="#fdfdfd"
+                        CornerRadius="100"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Height="110"
+                        Width="110"
+                        Margin="0 0 0 80">
+                    <Grid>
+                        <Ellipse Width="100"
+                                 Height="100"
+                                 StrokeThickness="4">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Images/logo.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+
+                </Border>
+
+                
+            </Grid>
+        </Border>
+        <Border Grid.Column="1"
+                        Background="white"
+                        CornerRadius="0 30 30 0"
+                        MouseDown="Border_MouseDown">
+            <Grid>
+                <materialDesign:PackIcon Kind="Close"
+                                                 VerticalAlignment="top"
+                                                 Width="20"
+                                                 Height="20"
+                                                 HorizontalAlignment="Right"
+                                                 Opacity="0.3"
+                                                 Margin="0 13 14 0"/>
+                <StackPanel VerticalAlignment="Center"
+                                    Margin="75 0">
+                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="John.G"
+                                     materialDesign:HintAssist.Hint="Username"
+                                     materialDesign:HintAssist.FloatingOffset="0,-20"
+                                     BorderBrush="#c5c8cc"
+                                     BorderThickness="0 0 0 1.5"/>
+                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="John.G"
+                                     materialDesign:HintAssist.Hint="Mail"
+                                     materialDesign:HintAssist.FloatingOffset="0,-20"
+                                     BorderBrush="#c5c8cc"
+                                     Margin="0 27"
+                                     BorderThickness="0 0 0 1"/>
+                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text="John.G"
+                                     materialDesign:HintAssist.Hint="ID"
+                                     materialDesign:HintAssist.FloatingOffset="0,-20"
+                                     BorderBrush="#c5c8cc"
+                                     Margin="0 27"
+                                     BorderThickness="0 0 0 1.5"/>
+                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                     Password="12344"
+                                     materialDesign:HintAssist.Hint="Hasło"
+                                     materialDesign:HintAssist.FloatingOffset="0,-20"
+                                     BorderBrush="#c5c8cc"
+                                     BorderThickness="0 0 0 1.5"/>
+                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                     Password="12345"
+                                     materialDesign:HintAssist.Hint="Powtórz hasło"
+                                     materialDesign:HintAssist.FloatingOffset="0,-20"
+                                     BorderBrush="#c5c8cc"
+                                     Margin="0 27 0 0"
+                                     BorderThickness="0 0 0 1"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Zapisz"
+                                        Background="#05b790"
+                                        Foreground="white"
+                                        FontSize="18"
+                                        Width="120"
+                                        Height="45"
+                                        materialDesign:ButtonAssist.CornerRadius="22"/>
+                        <Button Content="Zarejestruj"
+                                        FontSize="18"
+                                        Width="120"
+                                        Height="45"
+                                        Margin="5 0 0 0"
+                                        Style="{StaticResource MaterialDesignFlatButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="22"/>
+
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
     </Grid>
 </Window>
