@@ -171,14 +171,14 @@
                                             <TextBlock Text="{Binding name}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
 
                                         </Border>-->
-                                        <TextBlock Text="{Binding id}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding id_user}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Imię" IsReadOnly="True" Width="*" Binding="{Binding name}"/>
                         <DataGridTextColumn Header="Nazwisko" IsReadOnly="True" Width="*" Binding="{Binding surname}"/>
-                        <DataGridTextColumn Header="Stanowisko" IsReadOnly="True" Width="*" Binding="{Binding position}"/>
+                        <DataGridTextColumn Header="Stanowisko" IsReadOnly="True" Width="*" Binding="{Binding stanowisko}"/>
 
                         <!--<DataGridTemplateColumn Header="Dodaj do koszyka" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>

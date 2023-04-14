@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +25,7 @@ namespace Moderator
         public deleteuser()
         {
             InitializeComponent();
-            var conventor = new BrushConverter();
+            /*var conventor = new BrushConverter();
             ObservableCollection<UserData> user = new ObservableCollection<UserData>();
 
             user.Add(new UserData { id = "1111", name = "Anna", surname = "Kowalska", position = "Administrator" });
@@ -33,7 +35,18 @@ namespace Moderator
             user.Add(new UserData { id = "1115", name = "Agata", surname = "Nowak", position = "Pomoc apteczna" });
 
 
-            userDataGrid.ItemsSource = user;
+            userDataGrid.ItemsSource = user;*/
+
+            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            MySqlCommand cmd = new MySqlCommand("select * from users_data", connection);
+            connection.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            connection.Close();
+            userDataGrid.ItemsSource = dt.DefaultView;
         }
         private void Border_MouseDown(object senior, MouseButtonEventArgs e)
         {
