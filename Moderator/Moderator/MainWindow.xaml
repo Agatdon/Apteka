@@ -9,7 +9,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
 
-    <Border Background="#ff72d3ce" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Background="#888888" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -27,7 +27,7 @@
                 <Button  Margin="20 28 0 35" Style="{StaticResource topButton}">
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
-                <Border Grid.Row="1" Background="Azure" CornerRadius="0 50 0 30">
+                <Border Grid.Row="1" Background="#DDDDDD" CornerRadius="0 50 0 30">
                     <DockPanel>
                         <!-- menu logo-->
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
