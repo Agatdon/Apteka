@@ -155,35 +155,41 @@
                     <StackPanel VerticalAlignment="Center"
                                 Margin=" 75 0">
                         <TextBox Style="{StaticResource textboxSearch}"
+                                 Name="name_user"
                                  Text=" Imię"
                                  BorderBrush="#c5c8cc"
                                  BorderThickness=" 0 0 0 1.5"/>
                         <TextBox Style="{StaticResource textboxSearch}"
+                                 Name="surname_user"
                                  Text=" Nazwisko"
                                  BorderBrush="#c5c8cc"
-                                 BorderThickness=" 0 0 0 1.5"/>
+                                 BorderThickness=" 0 0 0 1.5" />
                         <TextBox Style="{StaticResource textboxSearch}"
+                                 Name="id_user_n"
                                  Text=" Pesel"
                                  BorderBrush="#c5c8cc"
                                  BorderThickness=" 0 0 0 1.5"/>
                         <TextBox Style="{StaticResource textboxSearch}"
+                                 Name="mail"
                                  Text=" mail"
                                  BorderBrush="#c5c8cc"
                                  BorderThickness=" 0 0 0 1.5"/>
                         <TextBox Style="{StaticResource textboxSearch}"
+                                 Name="phone_number"
                                  Text=" Telefon"
                                  BorderBrush="#c5c8cc"
                                  BorderThickness=" 0 0 0 1.5"/>
                         <TextBox Style="{StaticResource textboxSearch}"
+                                 Name="position"
                                  Text=" Stanowisko"
                                  BorderBrush="#c5c8cc"
                                  BorderThickness=" 0 0 0 1.5"/>
-                        <ListBox >
+                        <ListBox Name="role">
                             <ListBoxItem> administrator</ListBoxItem>
                             <ListBoxItem>farmaceuta</ListBoxItem>
                         </ListBox>
                         <Button Content="Zapisz uzytkownika"
-                                Style="{StaticResource menuButton}"/>
+                                Style="{StaticResource menuButton}" Click="Add_Click"/>
                     </StackPanel>
                 </Grid>
 <!--

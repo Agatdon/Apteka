@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,5 +65,30 @@ namespace Moderator
             newpage.Show();
             this.Close();
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            string Name = name_user.Text;
+            string surname = surname_user.Text;
+            string id_user = id_user_n.Text;
+            string email = mail.Text;
+            string phone = phone_number.Text;
+            string stanowisko = position.Text;
+            string rola = role.ToString();
+
+            string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+            string query= " INSERT INTO `mydb`.`users_data`" +
+                " (`id_user`, `name`, `surname`, `e_maill`, `phone`, `stanowisko`, `rola`) VALUES " +
+                "\r\n('" + this.id_user_n.Text+ "', '" +this.name_user.Text+ "', '" +this.surname_user.Text+ "', '" +this.mail.Text+ "', '" +this.phone_number.Text+ "','"+this.position.Text+"','"+rola+"'); ";
+            MySqlConnection Connect = new MySqlConnection(Myconnect);
+            MySqlCommand comand = new MySqlCommand(query, Connect);
+            MySqlDataReader MyReader2;
+            Connect.Open();
+            MyReader2 = comand.ExecuteReader();
+            MessageBox.Show("Zapisano Użytkownika");
+            while (MyReader2.Read()) { }
+            Connect.Close();
+        }
+
     }
 }
