@@ -76,7 +76,7 @@ namespace Moderator
             string stanowisko = position.Text;
             string rola = role.ToString();
 
-            string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+            string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=**;";
             string query= " INSERT INTO `mydb`.`users_data`" +
                 " (`id_user`, `name`, `surname`, `e_maill`, `phone`, `stanowisko`, `rola`) VALUES " +
                 "\r\n('" + this.id_user_n.Text+ "', '" +this.name_user.Text+ "', '" +this.surname_user.Text+ "', '" +this.mail.Text+ "', '" +this.phone_number.Text+ "','"+this.position.Text+"','"+rola+"'); ";
