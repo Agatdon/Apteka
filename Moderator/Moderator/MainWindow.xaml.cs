@@ -37,7 +37,7 @@ namespace Moderator
 
 
             userDataGrid.ItemsSource = user;*/
-            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=**;";
+            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
