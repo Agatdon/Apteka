@@ -37,7 +37,7 @@ namespace Moderator
 
             userDataGrid.ItemsSource = user;*/
 
-            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -95,13 +95,14 @@ namespace Moderator
         {
             if (userDataGrid.SelectedIndex != -1)
             {
-                for (int i=0; i > userDataGrid.SelectedIndex; i++)
-                {
+                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+                //for (int i=0; i > userDataGrid.SelectedIndex; i++)
+                //{
                     DataRowView row = (DataRowView)userDataGrid.SelectedItem;
                     DataRow s = row.Row;
                     // process stuff
                     string id = (string)s[0];
-                    string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=**;";
+                    
                     string query = " DELETE FROM `mydb`.`users_data` where `id_user`= '" + id + "'); ";
                     MySqlConnection Connect = new MySqlConnection(Myconnect);
                     MySqlCommand comand = new MySqlCommand(query, Connect);
@@ -111,7 +112,15 @@ namespace Moderator
                     MessageBox.Show("Zapisano Użytkownika");
                     while (MyReader2.Read()) { }
                     Connect.Close();
-                }
+                //}
+                MySqlConnection connection = new MySqlConnection(Myconnect);
+
+                MySqlCommand cmd = new MySqlCommand("select * from users_data", connection);
+                connection.Open();
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+                connection.Close();
+                userDataGrid.ItemsSource = dt.DefaultView;
             }
         }
     }
