@@ -43,7 +43,7 @@ namespace Moderator
 
             if (password.Password == password2.Password)
             {
-                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
                 string query = " INSERT INTO `mydb`.`users_data`" +
                     " (`id_user`, `name`, `surname`, `e_maill`, `rola` ) VALUES " +
                     "\r\n('" + this.id_user_n.Text + "', '" + this.name_user.Text + "', '" + this.surname_user.Text + "', '" + this.mail.Text + "', '" + rola + "'); ";
@@ -57,7 +57,7 @@ namespace Moderator
                 MyReader2 = comand.ExecuteReader();
                 while (MyReader2.Read()) { }
                 Connect.Close();
-                string Myconnect1 = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+                string Myconnect1 = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
                 MySqlConnection Connect1 = new MySqlConnection(Myconnect1);
                 MySqlCommand command2 = new MySqlCommand(query2, Connect1);
                 MySqlDataReader MyReader1;

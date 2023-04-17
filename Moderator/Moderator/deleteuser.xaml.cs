@@ -90,5 +90,29 @@ namespace Moderator
             this.Close();
 
         }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (userDataGrid.SelectedIndex != -1)
+            {
+                for (int i=0; i > userDataGrid.SelectedIndex; i++)
+                {
+                    DataRowView row = (DataRowView)userDataGrid.SelectedItem;
+                    DataRow s = row.Row;
+                    // process stuff
+                    string id = (string)s[0];
+                    string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=**;";
+                    string query = " DELETE FROM `mydb`.`users_data` where `id_user`= '" + id + "'); ";
+                    MySqlConnection Connect = new MySqlConnection(Myconnect);
+                    MySqlCommand comand = new MySqlCommand(query, Connect);
+                    MySqlDataReader MyReader2;
+                    Connect.Open();
+                    MyReader2 = comand.ExecuteReader();
+                    MessageBox.Show("Zapisano Użytkownika");
+                    while (MyReader2.Read()) { }
+                    Connect.Close();
+                }
+            }
+        }
     }
 }

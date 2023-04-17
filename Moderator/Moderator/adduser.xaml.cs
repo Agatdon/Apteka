@@ -68,11 +68,37 @@ namespace Moderator
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            if(name_user.Text==null || name_user.Text=="Imię")
+                { MessageBox.Show("Nieprawidłowe imię"); }
             string Name = name_user.Text;
+            if (surname_user.Text == null || surname_user.Text == "Nazwisko")
+            { MessageBox.Show("Nieprawidłowe nazwisko"); }
             string surname = surname_user.Text;
+            try
+            {
+                int id_user_int = int.Parse(id_user_n.Text);
+
+            }
+            catch { MessageBox.Show("Niepoprawne ID"); }
+            if(id_user_n.Text.Length != 11)
+            {
+                MessageBox.Show("Niewłaściwa ilość znaków w ID");
+            }
+
             string id_user = id_user_n.Text;
             string email = mail.Text;
+            try
+            {
+                int phone_int = int.Parse(phone_number.Text);
+
+            }
+            catch { MessageBox.Show("Niepoprawny numer telefonu"); }
+            if (phone_number.Text.Length != 9)
+            {
+                MessageBox.Show("Niewłaściwa ilość znaków w numerze telefonu");
+            }
             string phone = phone_number.Text;
+            
             string stanowisko = position.Text;
             string rola = role.ToString();
 
