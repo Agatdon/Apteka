@@ -35,8 +35,22 @@ namespace Moderator
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            if (name_user.Text == null || name_user.Text == "Imię")
+            { MessageBox.Show("Nieprawidłowe imię"); }
             string Name = name_user.Text;
+            if (surname_user.Text == null || surname_user.Text == "Nazwisko")
+            { MessageBox.Show("Nieprawidłowe nazwisko"); }
             string surname = surname_user.Text;
+            try
+            {
+                int id_user_int = int.Parse(id_user_n.Text);
+
+            }
+            catch { MessageBox.Show("Niepoprawne ID"); }
+            if (id_user_n.Text.Length != 11)
+            {
+                MessageBox.Show("Niewłaściwa ilość znaków w ID");
+            }
             string id_user = id_user_n.Text;
             string email = mail.Text;
             string rola = role.Text;
@@ -57,8 +71,7 @@ namespace Moderator
                 MyReader2 = comand.ExecuteReader();
                 while (MyReader2.Read()) { }
                 Connect.Close();
-                string Myconnect1 = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
-                MySqlConnection Connect1 = new MySqlConnection(Myconnect1);
+                MySqlConnection Connect1 = new MySqlConnection(Myconnect);
                 MySqlCommand command2 = new MySqlCommand(query2, Connect1);
                 MySqlDataReader MyReader1;
                 Connect1.Open();

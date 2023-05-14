@@ -42,7 +42,8 @@ namespace Moderator
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             MySqlCommand cmd = new MySqlCommand("select * from users_data", connection);
-            connection.Open();
+            try { connection.Open(); }
+            catch { MessageBox.Show("Nie można nawiązać połączenia"); }
             DataTable dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
             connection.Close();

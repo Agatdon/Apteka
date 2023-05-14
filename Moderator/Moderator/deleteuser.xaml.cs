@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Moderator
 {
@@ -95,24 +97,43 @@ namespace Moderator
         {
             if (userDataGrid.SelectedIndex != -1)
             {
-                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
-                //for (int i=0; i > userDataGrid.SelectedIndex; i++)
-                //{
+                
+                int x = 9;
+                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=1;";
+                for (int i=0; i < userDataGrid.SelectedIndex; i++)
+                {
                     DataRowView row = (DataRowView)userDataGrid.SelectedItem;
                     DataRow s = row.Row;
                     // process stuff
                     string id = (string)s[0];
+                    // dodać okno pytajace czy na pewno chcesz usunąć osobę +
+
+                    MessageBoxResult r =MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Alert", MessageBoxButton.YesNo);
                     
-                    string query = " DELETE FROM `mydb`.`users_data` where `id_user`= '" + id + "'); ";
-                    MySqlConnection Connect = new MySqlConnection(Myconnect);
-                    MySqlCommand comand = new MySqlCommand(query, Connect);
-                    MySqlDataReader MyReader2;
-                    Connect.Open();
-                    MyReader2 = comand.ExecuteReader();
-                    MessageBox.Show("Zapisano Użytkownika");
-                    while (MyReader2.Read()) { }
-                    Connect.Close();
-                //}
+                   if (r == MessageBoxResult.Yes)
+                   {
+                        string query0 = " DELETE FROM `mydb`.`user_account` where id_user= '" + id + "'; ";
+                        string query = " DELETE FROM `mydb`.`users_data` where id_user= '" + id + "'; ";
+                        MySqlConnection Connect = new MySqlConnection(Myconnect);
+                        MySqlCommand comand0 = new MySqlCommand(query0, Connect);
+                        MySqlCommand comand = new MySqlCommand(query, Connect);
+                        MySqlDataReader MyReader2;
+                        MySqlDataReader MyReader3;
+                        Connect.Open();
+                        MyReader2 = comand0.ExecuteReader();
+                        while (MyReader2.Read()) { }
+                        Connect.Close();
+                        Connect.Open();
+                        MyReader3 = comand.ExecuteReader();
+                        MessageBox.Show("Usunięto Użytkownika");
+                        while (MyReader3.Read()) { }
+                        Connect.Close();
+                        break;
+                    }
+                    else if(r== MessageBoxResult.No)
+                    { MessageBox.Show("Nie usunięto Użytkownika"); break; }
+                    
+                }
                 MySqlConnection connection = new MySqlConnection(Myconnect);
 
                 MySqlCommand cmd = new MySqlCommand("select * from users_data", connection);

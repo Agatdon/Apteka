@@ -68,7 +68,8 @@ namespace Moderator
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if(name_user.Text==null || name_user.Text=="Imię")
+            // dodać klasę pobierającą te wartości (maja one byc const)
+            if (name_user.Text==null || name_user.Text=="Imię")
                 { MessageBox.Show("Nieprawidłowe imię"); }
             string Name = name_user.Text;
             if (surname_user.Text == null || surname_user.Text == "Nazwisko")
@@ -100,9 +101,9 @@ namespace Moderator
             string phone = phone_number.Text;
             
             string stanowisko = position.Text;
-            string rola = role.ToString();
+            string rola = role.SelectedItem.ToString();
 
-            string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=**;";
+            string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
             string query= " INSERT INTO `mydb`.`users_data`" +
                 " (`id_user`, `name`, `surname`, `e_maill`, `phone`, `stanowisko`, `rola`) VALUES " +
                 "\r\n('" + this.id_user_n.Text+ "', '" +this.name_user.Text+ "', '" +this.surname_user.Text+ "', '" +this.mail.Text+ "', '" +this.phone_number.Text+ "','"+this.position.Text+"','"+rola+"'); ";
@@ -116,5 +117,6 @@ namespace Moderator
             Connect.Close();
         }
 
+        
     }
 }
