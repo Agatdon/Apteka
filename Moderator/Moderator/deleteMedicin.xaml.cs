@@ -24,6 +24,7 @@ namespace Moderator
     /// </summary>
     public partial class deleteMedicin : Window
     {
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public deleteMedicin()
         {
             InitializeComponent();
@@ -47,9 +48,9 @@ namespace Moderator
             lek.Add(new PharamcyData { Name = "Nimesil", srodek = "Kwas jakiś", dawka = "proszek", cena = "5.89" });
 
             pharmacyDataGrid.ItemsSource = lek;*/
-            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+            //string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlConnection connection = new MySqlConnection(Myconnect);
 
             MySqlCommand cmd = new MySqlCommand("select * from medicines", connection);
             try { connection.Open(); }
@@ -91,14 +92,13 @@ namespace Moderator
         {
             if (userDataGrid.SelectedIndex != -1)
             {
-                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+               // string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
                 for (int i = 0; i < userDataGrid.SelectedIndex; i++)
                 {
                     DataRowView row = (DataRowView)userDataGrid.SelectedItem;
                     DataRow s = row.Row;
                     // process stuff
                     string name = (string)s[0];
-                    // dodać okno pytajace czy na pewno chcesz usunąć osobę
 
                     MessageBoxResult r = MessageBox.Show("Czy na pewno chcesz usunąć lek?", "Alert", MessageBoxButton.YesNo);
 

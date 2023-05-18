@@ -21,6 +21,7 @@ namespace Moderator
     /// </summary>
     public partial class adduser : Window
     {
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public adduser()
         {
             InitializeComponent();
@@ -77,7 +78,7 @@ namespace Moderator
             string surname = surname_user.Text;
             try
             {
-                int id_user_int = int.Parse(id_user_n.Text);
+                long id_user_int = long.Parse(id_user_n.Text);
 
             }
             catch { MessageBox.Show("Niepoprawne ID"); }
@@ -103,7 +104,7 @@ namespace Moderator
             string stanowisko = position.Text;
             string rola = role.SelectedItem.ToString();
 
-            string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+            
             string query= " INSERT INTO `mydb`.`users_data`" +
                 " (`id_user`, `name`, `surname`, `e_maill`, `phone`, `stanowisko`, `rola`) VALUES " +
                 "\r\n('" + this.id_user_n.Text+ "', '" +this.name_user.Text+ "', '" +this.surname_user.Text+ "', '" +this.mail.Text+ "', '" +this.phone_number.Text+ "','"+this.position.Text+"','"+rola+"'); ";

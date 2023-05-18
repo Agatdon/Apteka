@@ -21,11 +21,12 @@ namespace Moderator
     /// </summary>
     public partial class modifyMedicin : Window
     {
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public modifyMedicin()
         {
             InitializeComponent();
 
-            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+            //string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -76,7 +77,7 @@ namespace Moderator
         {
             if (Name_medicin.SelectedIndex != -1) 
             {
-                string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+                //string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
                 MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -105,7 +106,7 @@ namespace Moderator
             string form_ = form.Text;
             string price_ = price.Text;
 
-            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+            //string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -116,7 +117,7 @@ namespace Moderator
             dt.Load(cmd.ExecuteReader());
             connection.Close();
             MessageBox.Show("Zaktualizowano");
-
+           // formatowanie csv (leki)
             Name_medicin.UnselectAll();
             substance.Text ="";
             form.Text = "";

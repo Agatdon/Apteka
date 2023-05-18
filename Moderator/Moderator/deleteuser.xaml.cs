@@ -24,6 +24,8 @@ namespace Moderator
     /// </summary>
     public partial class deleteuser : Window
     {
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public deleteuser()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace Moderator
 
             userDataGrid.ItemsSource = user;*/
 
-            string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+            
 
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -99,7 +101,7 @@ namespace Moderator
             {
                 
                 int x = 9;
-                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=1;";
+                
                 for (int i=0; i < userDataGrid.SelectedIndex; i++)
                 {
                     DataRowView row = (DataRowView)userDataGrid.SelectedItem;

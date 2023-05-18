@@ -104,12 +104,13 @@
                                     Margin="75 0">
                     <TextBox Style="{StaticResource textboxFilter}"
                                      Text="ID/PESEL"
+                             Name="id"
                                      BorderBrush="#c5c8cc"
                                      BorderThickness="0 0 0 1.5"/>
 
                     <PasswordBox 
                                      Password="12344"
-                                     
+                                     Name="passy"
                                      />
 
 
@@ -119,7 +120,7 @@
                                         Foreground="white"
                                         FontSize="18"
                                         Width="120"
-                                        Height="45"/>
+                                        Height="45" Click="Button_Click"/>
                         <Button Content="Zarejestruj"
                                 Click="Register_Click"
                                         FontSize="18"
