@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33423.256
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "datagriddashboard", "datagriddashboard\datagriddashboard.csproj", "{80EFA91D-3023-4CA9-907A-B42045A98DBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80EFA91D-3023-4CA9-907A-B42045A98DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80EFA91D-3023-4CA9-907A-B42045A98DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80EFA91D-3023-4CA9-907A-B42045A98DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80EFA91D-3023-4CA9-907A-B42045A98DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF4643F9-4ABC-4161-A591-33A0D9C6DD79}
+	EndGlobalSection
+EndGlobal
