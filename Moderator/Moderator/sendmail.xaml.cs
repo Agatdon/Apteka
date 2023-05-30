@@ -96,7 +96,7 @@ namespace Moderator
             // Konfiguracja serwera SMTP
             SmtpClient smtpClient = new SmtpClient("poczta.o2.pl", 587);
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential("login", "hasło");
+            smtpClient.Credentials = new NetworkCredential("login", "haslo");
 
             try
             {
