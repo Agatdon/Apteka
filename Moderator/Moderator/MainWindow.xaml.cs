@@ -23,7 +23,7 @@ namespace Moderator
     /// </summary>
     public partial class MainWindow : Window
     {
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public MainWindow()
         {
             InitializeComponent();
@@ -88,6 +88,13 @@ namespace Moderator
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             deleteuser newpage = new deleteuser();
+            newpage.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            signin newpage = new signin();
             newpage.Show();
             this.Close();
         }

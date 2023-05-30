@@ -18,10 +18,11 @@ namespace Moderator
 {
     /// <summary>
     /// Logika interakcji dla klasy modifyMedicin.xaml
+    /// dodanie wyszukiwania
     /// </summary>
     public partial class modifyMedicin : Window
     {
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public modifyMedicin()
         {
             InitializeComponent();
@@ -69,6 +70,12 @@ namespace Moderator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            deleteMedicin mw = new deleteMedicin();
+            mw.Show();
+            this.Close();
+        }
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            addMedicin mw = new addMedicin();
             mw.Show();
             this.Close();
         }
@@ -122,6 +129,13 @@ namespace Moderator
             substance.Text ="";
             form.Text = "";
             price.Text ="";
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            signin newpage = new signin();
+            newpage.Show();
+            this.Close();
         }
     }
 }

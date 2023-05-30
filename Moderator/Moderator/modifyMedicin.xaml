@@ -50,7 +50,7 @@
 
                         <!-- menu buttons-->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" Click="Button_Click">
+                            <Button Style="{StaticResource menuButton}" Click="add_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Hospital"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Dodaj lek"/>
@@ -71,7 +71,7 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click_2">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout"  Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Wyloguj"/>

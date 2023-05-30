@@ -24,7 +24,7 @@ namespace Moderator
     /// </summary>
     public partial class deleteMedicin : Window
     {
-        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public deleteMedicin()
         {
             InitializeComponent();
@@ -137,15 +137,19 @@ namespace Moderator
             mw.Show();
             this.Close();
         }
+        private void add_Click(object sender, RoutedEventArgs e)
+        {
+            addMedicin mw = new addMedicin();
+            mw.Show();
+            this.Close();
+        }
 
-        
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            signin newpage = new signin();
+            newpage.Show();
+            this.Close();
+        }
     }
-    public class PharamcyData
-    {
-        public string Name { get; set; }
-        public string substance { get; set; }
-        public string form { get; set; }
-        public string price { get; set; }
-
-    }
+    
 }

@@ -24,8 +24,8 @@ namespace Moderator
     /// </summary>
     public partial class deleteuser : Window
     {
-        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public deleteuser()
         {
             InitializeComponent();
@@ -100,15 +100,15 @@ namespace Moderator
             if (userDataGrid.SelectedIndex != -1)
             {
                 
-                int x = 9;
-                
                 for (int i=0; i < userDataGrid.SelectedIndex; i++)
                 {
-                    DataRowView row = (DataRowView)userDataGrid.SelectedItem;
+                    DataRowView row = (DataRowView)userDataGrid.SelectedItem
+                        ;
                     DataRow s = row.Row;
                     // process stuff
+                    //sprawdzenie warunków
+                    // sprawdzić break
                     string id = (string)s[0];
-                    // dodać okno pytajace czy na pewno chcesz usunąć osobę +
 
                     MessageBoxResult r =MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Alert", MessageBoxButton.YesNo);
                     
@@ -130,7 +130,7 @@ namespace Moderator
                         MessageBox.Show("Usunięto Użytkownika");
                         while (MyReader3.Read()) { }
                         Connect.Close();
-                        break;
+                        //break;
                     }
                     else if(r== MessageBoxResult.No)
                     { MessageBox.Show("Nie usunięto Użytkownika"); break; }
@@ -145,6 +145,13 @@ namespace Moderator
                 connection.Close();
                 userDataGrid.ItemsSource = dt.DefaultView;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            signin newpage = new signin();
+            newpage.Show();
+            this.Close();
         }
     }
 }

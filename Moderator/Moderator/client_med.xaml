@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moderator" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="client_med" Height="450" Width="800">
+        Title="client_med" Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -33,11 +33,11 @@
                         <!-- menu logo-->
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
-                            <Ellipse>
+                            <!--<Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Images/logo.png"/>
+                                    <ImageBrush ImageSource="/images/logo.png"/>
                                 </Ellipse.Fill>
-                            </Ellipse>
+                            </Ellipse>-->
                         </Border>
                         <!-- menu title-->
                         <TextBlock Text="Apteka" Foreground="Black" FontSize="22" FontWeight="SemiBold"
@@ -57,21 +57,21 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button x:Name="bt_baskey" Style="{StaticResource menuButton}" Click="Bt_baskey_Click">
+                            <Button x:Name="bt_baskey" Style="{StaticResource menuButton}" Click="bt_baskey_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Basket"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Koszyk"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="History"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Historia"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click_1">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout"  Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Wyloguj"/>
@@ -135,8 +135,8 @@
 
                     <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>
                 </Grid>-->
+
                 
-                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds"/>
 
                 <!-- separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
@@ -150,18 +150,26 @@
 
                 <!--  pharmacy datagrid-->
 
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid" SelectionChanged="pharmacyDataGrid_SelectionChanged">
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
+                        <DataGridCheckBoxColumn CanUserResize="False" 
+                                                Width="auto"  
+                                                x:Name="ccbox" 
+                                                Binding="{Binding IsChecked}"  >
+                            <DataGridCheckBoxColumn.ElementStyle>
+                                <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}" >
+                                  <!--  <EventSetter Event="Checked" Handler="chboxhandler" /> -->
+                                </Style>
+                            </DataGridCheckBoxColumn.ElementStyle>
                             <DataGridCheckBoxColumn.HeaderTemplate>
                                 <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
+                                    <CheckBox Style="{StaticResource CheckBoxStyle1}" IsChecked="False"/>
                                 </DataTemplate>
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
-                       
 
-                        <DataGridTemplateColumn Header="Nazwa leku" IsReadOnly="True" Width="*">
+
+                        <DataGridTemplateColumn Header="Nazwa leku" IsReadOnly="True" Width="*" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -169,33 +177,28 @@
                                             <TextBlock Text="{Binding srodek}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
 
                                         </Border>
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding name_m}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="True" Width="*" Binding="{Binding srodek}"/>
-                        <DataGridTextColumn Header="Postac" IsReadOnly="True" Width="*" Binding="{Binding dawka}"/>
-                        <DataGridTextColumn Header="Cena" IsReadOnly="True" Width="*" Binding="{Binding cena}"/>
+                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="True" Width="*" Binding="{Binding substance}"/>
+                        <DataGridTextColumn Header="Postac" IsReadOnly="True" Width="*" Binding="{Binding form}"/>
+                        <DataGridTextColumn Header="Cena" IsReadOnly="True" Width="*" Binding="{Binding price}"/>
 
-                        <!--<DataGridTemplateColumn Header="Dodaj do koszyka" IsReadOnly="True" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}">
-                                            <Icon:PackIconMaterial Kind="Shopping" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                        <Button Style="{StaticResource gridRemoveButton}" Margin=" 5 0 0 0">
-                                            <Icon:PackIconMaterial Kind="Shopping" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>-->
+                        
                     </DataGrid.Columns>
 
                 </DataGrid>
                 <!-- pagination section-->
+                
+                <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                        CornerRadius="5" Padding="5" Background="white" Margin=" 0 10 10 10">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource addButton}" Content=" Napisz do nas!" Margin="10 0 20 0" Click="Button_Click_2"/>
+                        <Button Style="{StaticResource addButton}" Content="Przejdź do koszyka" Click="delete_medicin" HorizontalAlignment="Center" Height="NaN"/>
+                    </StackPanel>
+                </Border>
 
                 <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
                         CornerRadius="5" Padding="5" Background="white" Margin=" 0 10 10 10">

@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +17,12 @@ using System.Windows.Shapes;
 namespace Moderator
 {
     /// <summary>
-    /// Logika interakcji dla klasy adduser.xaml
+    /// Logika interakcji dla klasy addMedicin.xaml
     /// </summary>
-    public partial class adduser : Window
+    public partial class addMedicin : Window
     {
         string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
-        public adduser()
+        public addMedicin()
         {
             InitializeComponent();
         }
@@ -56,13 +56,13 @@ namespace Moderator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
+            modifyMedicin mw = new modifyMedicin();
             mw.Show();
             this.Close();
         }
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            deleteuser newpage = new deleteuser();
+            deleteMedicin newpage = new deleteMedicin();
             newpage.Show();
             this.Close();
         }
@@ -70,44 +70,22 @@ namespace Moderator
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             // dodać klasę pobierającą te wartości (maja one byc const)
-            if (name_user.Text==null || name_user.Text=="Imię")
-                { MessageBox.Show("Nieprawidłowe imię"); }
-            string Name = name_user.Text;
-            if (surname_user.Text == null || surname_user.Text == "Nazwisko")
-            { MessageBox.Show("Nieprawidłowe nazwisko"); }
-            string surname = surname_user.Text;
-            try
-            {
-                long id_user_int = long.Parse(id_user_n.Text);
+            if (Medicine_name.Text == null)
+            { MessageBox.Show("Nieprawidłowa nazwa"); }
+            string Name = Medicine_name.Text;
+            if (substance.Text == null )
+            { MessageBox.Show("Nieprawidłowa substancja"); }
+            string substance_ = substance.Text;
 
-            }
-            catch { MessageBox.Show("Niepoprawne ID"); }
-            if(id_user_n.Text.Length != 11)
-            {
-                MessageBox.Show("Niewłaściwa ilość znaków w ID");
-            }
+            string form_ = form.Text;
+            if (form.Text == null)
+            { MessageBox.Show("Nieprawidłowa forma leku"); }
+            string price_ = price.Text;
 
-            string id_user = id_user_n.Text;
-            string email = mail.Text;
-            try
-            {
-                int phone_int = int.Parse(phone_number.Text);
 
-            }
-            catch { MessageBox.Show("Niepoprawny numer telefonu"); }
-            if (phone_number.Text.Length != 9)
-            {
-                MessageBox.Show("Niewłaściwa ilość znaków w numerze telefonu");
-            }
-            string phone = phone_number.Text;
-            
-            string stanowisko = position.Text;
-            string rola = role.SelectedItem.ToString();
-
-            
-            string query= " INSERT INTO `mydb`.`users_data`" +
-                " (`id_user`, `name`, `surname`, `e_maill`, `phone`, `stanowisko`, `rola`) VALUES " +
-                "\r\n('" + this.id_user_n.Text+ "', '" +this.name_user.Text+ "', '" +this.surname_user.Text+ "', '" +this.mail.Text+ "', '" +this.phone_number.Text+ "','"+this.position.Text+"','"+rola+"'); ";
+            string query = " INSERT INTO `mydb`.`medicines`" +
+                " (`name_m`, `substance`, `form`, `price`) VALUES " +
+                "\r\n('" + Name + "', '" + substance_ + "', '" +form_+ "', '" + price_ + "'); ";
             MySqlConnection Connect = new MySqlConnection(Myconnect);
             MySqlCommand comand = new MySqlCommand(query, Connect);
             MySqlDataReader MyReader2;
