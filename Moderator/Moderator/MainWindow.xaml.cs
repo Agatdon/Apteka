@@ -23,7 +23,7 @@ namespace Moderator
     /// </summary>
     public partial class MainWindow : Window
     {
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public MainWindow()
         {
             InitializeComponent();

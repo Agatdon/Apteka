@@ -24,8 +24,8 @@ namespace Moderator
     /// </summary>
     public partial class deleteuser : Window
     {
-        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public deleteuser()
         {
             InitializeComponent();

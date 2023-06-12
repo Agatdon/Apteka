@@ -112,7 +112,7 @@
                     <Icon:PackIconMaterial Kind="Bell"/>
                 </Button>
                 <!-- Page title-->
-                <TextBlock Text="Dodaj użytkownika" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                <TextBlock Text="Modyfikuj lek" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
                            HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- add buton-->
@@ -122,6 +122,7 @@
                         <TextBlock Text="Dodaj"/>
                     </StackPanel>
                 </Button>
+
 
                 <!-- separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
@@ -134,28 +135,30 @@
                 </StackPanel>
 
                 <!-- Counter title-->
-                <!--
-                <TextBlock Text="68 Club Staff" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
-                           Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <!--<TextBlock Text="68 Club Staff" Grid.Row="4" FontSize="18" FontWeight="SemiBold"
+                           Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
                 <TextBlock Text="Filter by" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0"
-                           Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
+                           Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
                 <!-- filter textbox-->
                 <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
-                    <!--<TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                    <TextBlock x:Name="filter" Margin="15,18,15,0" Foreground="#b0b9c6" IsHitTestVisible="False"
                                Panel.ZIndex="1" Text="Filtruj według..."
-                               Visibility="{Binding ElementName=txtFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+                               Visibility="{Binding ElementName=txtFilter, 
+                        Path=Text.IsEmpty, 
+                        Converter={StaticResource BoolToVis}}" 
+                               Height="16" VerticalAlignment="Top"/>
 
-                    <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>-->
+                    <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}" HorizontalAlignment="Right" Width="200" TextChanged="txt_change"/>
                 </Grid>
-                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds"/>
 
                 <!--  user datagrid-->
                 <Grid Grid.Row="5">
                     <StackPanel VerticalAlignment="Center"
                                 Margin=" 75 0">
                         <ListBox Name="Name_medicin"
-                                 Height="45"
+                                 Height="60"
                                  BorderBrush="#c5c8cc"
                                  BorderThickness=" 0 0 0 1.5" SelectionChanged="Name_medicin_SelectionChanged" >
                             <ListBox.ItemTemplate>
@@ -174,7 +177,7 @@
                                  Name="substance"
                                  Text="{Binding substance}"
                                  BorderBrush="#c5c8cc"
-                                 BorderThickness=" 0 0 0 1.5"
+                                 BorderThickness=" 0 0 0 1.5" 
                                  />
                         <TextBox Style="{StaticResource textboxSearch}"
                                  Name="form"

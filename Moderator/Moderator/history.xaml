@@ -138,8 +138,6 @@
                     <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>
                 </Grid>-->
 
-                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds" />
-
                 <!-- separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
                 <!-- tab buttons-->

@@ -25,7 +25,7 @@ namespace Moderator
     public partial class signin : Window
     {
         string role;
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public signin()
         {
             InitializeComponent();

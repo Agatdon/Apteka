@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto.Agreement.JPake;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,7 @@ namespace Moderator
     /// </summary>
     public partial class modifyMedicin : Window
     {
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public modifyMedicin()
         {
             InitializeComponent();
@@ -137,5 +138,63 @@ namespace Moderator
             newpage.Show();
             this.Close();
         }
+
+        private void txt_change(object sender, RoutedEventArgs e)
+        {
+            
+                var searchName = txtFilter.Text;
+                SearchByName(searchName);
+            
+
+        }
+        private void SearchByName(string searchName)
+        {
+            // Przygotowanie listy pasujących leków
+            DataTable drugs = new DataTable();
+            drugs.Columns.Add("name_m", typeof(string));
+            drugs.Columns.Add("Column2", typeof(string));
+            drugs.Columns.Add("Column3", typeof(string));
+            drugs.Columns.Add("Column4", typeof(string));
+            
+
+            // Pobierz listę wszystkich leków z bazy danych lub innego źródła danych
+            /*List<string> allDrugs = new List<string>();
+
+            foreach (var item in Name_medicin.Items)
+            {
+                DataRowView rowView = (DataRowView)item;
+                string value = rowView["Name_m"].ToString();
+                allDrugs.Add(value);
+            }*/
+
+            // Teraz allDrugs zawiera wszystkie wartości z listboxa
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            MySqlCommand cmd = new MySqlCommand("select * from medicines", connection);
+            connection.Open();
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            connection.Close();
+
+            // Przefiltruj leki na podstawie wpisywanej nazwy
+            foreach (DataRow row in dt.Rows)
+            {
+                string drugName = row[0].ToString();
+                if (drugName.StartsWith(searchName, StringComparison.OrdinalIgnoreCase))
+                {
+                    DataRow newRow = drugs.NewRow();
+                    newRow[0]= row[0].ToString();
+                    newRow[1] = row[1].ToString();
+                    newRow[2] = row[2].ToString();
+                    newRow[3] = row[3].ToString();
+                    drugs.Rows.Add(newRow);
+                }
+            }
+            
+            int x = 9;
+            // Wyświetl listę pasujących leków w kontrolce ListBox lub innej odpowiedniej kontrolce
+            Name_medicin.ItemsSource = drugs.DefaultView;
+        }
+
     }
 }

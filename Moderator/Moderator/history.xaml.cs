@@ -22,7 +22,7 @@ namespace Moderator
     /// </summary>
     public partial class history : Window
     {
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public history()
         {
             InitializeComponent();

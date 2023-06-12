@@ -22,7 +22,7 @@ namespace Moderator
     /// </summary>
     public partial class basket : Window
     {
-        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public basket()
         {
             InitializeComponent();
@@ -30,6 +30,13 @@ namespace Moderator
             //pharmacyDataGrid.ItemsSource = selectedDataTable.DefaultView;
         }
         public basket(List<PharamcyData> lt)
+        {
+            InitializeComponent();
+            //DataTable selectedItem = SharedData.Instance.SelectedItem;
+            pharmacyDataGrid.ItemsSource = lt;
+        }
+
+        public basket(List<DataTable> lt)
         {
             InitializeComponent();
             //DataTable selectedItem = SharedData.Instance.SelectedItem;
@@ -108,7 +115,7 @@ namespace Moderator
             // Zapisywanie zamówienia
             foreach (PharamcyData item in pharmacyDataGrid.Items)
             {
-                string id = item.Name; // Zakładam, że w klasie PharamcyData jest pole Id
+                string id = item.name_m; // Zakładam, że w klasie PharamcyData jest pole Id
                 Random random = new Random();
                 int randomNumber = random.Next(100000, 1000000);
                 DateTime currentDate = DateTime.Today;

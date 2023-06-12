@@ -25,7 +25,7 @@ namespace Moderator
     /// </summary>
     public partial class client_med : Window
     {
-        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         DataTable dt = new DataTable();
         public client_med()
         {
@@ -84,64 +84,53 @@ namespace Moderator
 
         private void delete_medicin(object sender, RoutedEventArgs e)
         {
-            List<PharamcyData> lista = GetSelectedItemsFromDataGrid(pharmacyDataGrid);
+            List<PharamcyData> lista = GetSelectedRowsFromDataGrid(pharmacyDataGrid);
+            DataRowView row = (DataRowView)pharmacyDataGrid.SelectedItem;
+            DataRow s = row.Row;
+            //sprawdzenie warunków
+            // sprawdzić break
+            var id = row[4];
             int x = 9;
             basket mw = new basket(lista);
             mw.Show();
             this.Close();
         }
-
-
-
-
-        private List<PharamcyData> GetSelectedItemsFromDataGrid(DataGrid dataGrid)
+        List<PharamcyData> GetSelectedRowsFromDataGrid(DataGrid dataGrid)
         {
-            var selectedItems = new List<PharamcyData>();
-
-            foreach (var selectedItem in dataGrid.SelectedItems)
+            List<PharamcyData> selectedRows = new List<PharamcyData>();
+            foreach (var item in dataGrid.Items)
             {
-                if (selectedItem is DataRowView rowView)
+                DataRowView row = (DataRowView)item;
+                DataRow s = row.Row;
+                bool check =(bool) row[4];
+                int t = 0;
+                if (check)
                 {
-                    var dataRow = rowView.Row;
-                    var name = (string)dataRow["name_m"];
-                    var substance = (string)dataRow["substance"];
-                    var form = (string)dataRow["form"];
-                    var price = (string)dataRow["price"];
-
-                    var pharmacyData = new PharamcyData
-                    {
-                        IsChecked = true, // Możesz ustawić to na true, ponieważ tylko zaznaczone elementy są iterowane
-                        Name = name,
-                        substance = substance,
-                        form = form,
-                        price = price
-                    };
-
-                    selectedItems.Add(pharmacyData);
+                    var pharmacyData1 = ConvertDataRowViewToPharmacyData(row);
+                    selectedRows.Add(pharmacyData1);
                 }
+
             }
-
-            return selectedItems;
+            return selectedRows;
         }
-
-
-        private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
+        private PharamcyData ConvertDataRowViewToPharmacyData(DataRowView rowView)
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-                var child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
-                    return (childItem)child;
-                else
-                {
-                    var childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                        return childOfChild;
-                }
-            }
-            return null;
-        }
+            var dataRow = rowView.Row;
+            var isChecked = (bool)dataRow["IsChecked"];
+            var name_m = (string)dataRow["name_m"];
+            var substance = (string)dataRow["substance"];
+            var form = (string)dataRow["form"];
+            var price = (string)dataRow["price"];
 
+            return new PharamcyData
+            {
+                IsChecked = isChecked,
+                name_m = name_m,
+                substance = substance,
+                form = form,
+                price = price
+            };
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             signin newpage = new signin();

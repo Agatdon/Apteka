@@ -152,21 +152,11 @@
 
                 <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserResize="False" 
-                                                Width="auto"  
-                                                x:Name="ccbox" 
-                                                Binding="{Binding IsChecked}"  >
-                            <DataGridCheckBoxColumn.ElementStyle>
-                                <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}" >
-                                  <!--  <EventSetter Event="Checked" Handler="chboxhandler" /> -->
-                                </Style>
-                            </DataGridCheckBoxColumn.ElementStyle>
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}" IsChecked="False"/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
+                        <DataGridCheckBoxColumn
+                            CanUserResize="False" 
+                            Width="Auto" IsReadOnly="False" 
+                            Header="" 
+                            Binding="{Binding IsChecked}"/>
 
 
                         <DataGridTemplateColumn Header="Nazwa leku" IsReadOnly="True" Width="*" >
@@ -182,7 +172,8 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="True" Width="*" Binding="{Binding substance}"/>
+                        
+                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="False" Width="*" Binding="{Binding substance}"/>
                         <DataGridTextColumn Header="Postac" IsReadOnly="True" Width="*" Binding="{Binding form}"/>
                         <DataGridTextColumn Header="Cena" IsReadOnly="True" Width="*" Binding="{Binding price}"/>
 

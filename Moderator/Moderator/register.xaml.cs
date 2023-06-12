@@ -21,7 +21,7 @@ namespace Moderator
     /// </summary>
     public partial class register : Window
     {
-        public string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+        public string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
         public register()
         {
             InitializeComponent();
