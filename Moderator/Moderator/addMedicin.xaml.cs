@@ -21,7 +21,7 @@ namespace Moderator
     /// </summary>
     public partial class addMedicin : Window
     {
-        public string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+        public string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
         public addMedicin()
         {
             InitializeComponent();

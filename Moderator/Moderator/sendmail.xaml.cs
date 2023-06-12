@@ -88,15 +88,15 @@ namespace Moderator
 
             // Tworzenie wiadomości e-mail
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("agata.doniec@o2.pl");
-            mail.To.Add("a.doniec.sne@gmail.com");
+            mail.From = new MailAddress("nadawca");
+            mail.To.Add("odbiorca");
             mail.Subject = "Nowa wiadomość od klienta";
             mail.Body = $"Imię: {name}\nE-mail: {email}\nWiadomość: {message}";
 
             // Konfiguracja serwera SMTP
             SmtpClient smtpClient = new SmtpClient("poczta.o2.pl", 587);
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential("agata.doniec@o2.pl", "BliSch19");
+            smtpClient.Credentials = new NetworkCredential("mail", "password");
 
             try
             {

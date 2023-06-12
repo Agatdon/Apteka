@@ -23,13 +23,12 @@ namespace Moderator
     /// </summary>
     public partial class modifyMedicin : Window
     {
-        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+        string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
         public modifyMedicin()
         {
             InitializeComponent();
 
-            //string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
-
+           
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             MySqlCommand cmd = new MySqlCommand("select * from medicines", connection);
@@ -85,7 +84,6 @@ namespace Moderator
         {
             if (Name_medicin.SelectedIndex != -1) 
             {
-                //string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
                 MySqlConnection connection = new MySqlConnection(connectionString);
 

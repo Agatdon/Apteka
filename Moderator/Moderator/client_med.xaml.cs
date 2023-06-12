@@ -25,7 +25,7 @@ namespace Moderator
     /// </summary>
     public partial class client_med : Window
     {
-        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=Oraclessie1;";
+        string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
         DataTable dt = new DataTable();
         public client_med()
         {
