@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moderator" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="basket" Height="450" Width="800">
+        Title="basket" Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -28,16 +28,16 @@
                 <Button  Margin="20 28 0 35" Style="{StaticResource topButton}">
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
-                <Border Background="Azure" CornerRadius="0 50 0 30" Margin="0,63,0,0" Grid.RowSpan="2">
+                <Border Grid.Row="1" Background="Azure" CornerRadius="0 50 0 30">
                     <DockPanel>
                         <!-- menu logo-->
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
                             <Ellipse>
-                                <Ellipse.Fill>
+                                <!--<Ellipse.Fill>
                                     <ImageBrush ImageSource="/Images/logo.png"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
+                                </Ellipse.Fill>-->
+							</Ellipse>
                         </Border>
                         <!-- menu title-->
                         <TextBlock Text="Apteka" Foreground="Black" FontSize="22" FontWeight="SemiBold"
@@ -45,41 +45,33 @@
                         <TextBlock Text="Panel Klineta" Foreground="Gray" FontSize="14" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
                         <!-- mneu separator-->
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#7e5fdc"/>
 
                         <!-- menu buttons-->
                         <StackPanel DockPanel.Dock="Top">
                             <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Lista leków"/>
                                 </StackPanel>
                             </Button>
 
-                            <!--Ponizej jesli sie odkomentyje to bedzie aktywny przycisk-->
-
-                            <!--<Button x:Name="bt_baskey" Style="{StaticResource menuButton}" Click="Bt_baskey_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Basket"  Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Koszyk"/>
-                                </StackPanel>
-                            </Button>-->
-
-                            <Button Style="{StaticResource menuButton}">
+                            <Button x:Name="bt_baskey" Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Basket"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Koszyk"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Button_Click_1">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="History"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Historia"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click_3">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout"  Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Wyloguj"/>
@@ -117,12 +109,12 @@
                            HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- add buton-->
-                <Button Style="{StaticResource addButton}">
+                <!--<Button Style="{StaticResource addButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
                         <TextBlock Text="Dodaj do koszyka"/>
                     </StackPanel>
-                </Button>
+                </Button> -->
 
                 <!-- separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
@@ -146,8 +138,6 @@
                     <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>
                 </Grid>-->
 
-                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds"/>
-
                 <!-- separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
                 <!-- tab buttons-->
@@ -158,37 +148,28 @@
                     <Button Content="Cena" Style="{StaticResource tabButton}"/>
                 </StackPanel>
 
-                <!--  pharmacy datagrid--><!--
+                <!--  pharmacy datagrid-->
 
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid" SelectionChanged="pharmacyDataGrid_SelectionChanged">
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
-
 
                         <DataGridTemplateColumn Header="Nazwa leku" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock Text="{Binding srodek}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-
+                                            <TextBlock Text="{Binding name_m}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
                                         </Border>
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding name_m}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="True" Width="*" Binding="{Binding srodek}"/>
-                        <DataGridTextColumn Header="Postac" IsReadOnly="True" Width="*" Binding="{Binding dawka}"/>
-                        <DataGridTextColumn Header="Cena" IsReadOnly="True" Width="*" Binding="{Binding cena}"/>
+                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="True" Width="*" Binding="{Binding substance}"/>
+                        <DataGridTextColumn Header="Postac" IsReadOnly="True" Width="*" Binding="{Binding form}"/>
+                        <DataGridTextColumn Header="Cena" IsReadOnly="True" Width="*" Binding="{Binding price}"/>
 
-                        --><!--<DataGridTemplateColumn Header="Dodaj do koszyka" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn Header="Dodaj do koszyka" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -201,11 +182,15 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>--><!--
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
 
-                </DataGrid>-->
+                </DataGrid>
                 <!-- pagination section-->
+                <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                        CornerRadius="5" Padding="5" Background="white" Margin=" 0 10 10 10">
+                    <Button Style="{StaticResource addButton}" Content="Przejdż do płatności"  HorizontalAlignment="Center" Height="NaN" Click="Button_Click_2"/>
+                </Border>
 
                 <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
                         CornerRadius="5" Padding="5" Background="white" Margin=" 0 10 10 10">
@@ -233,10 +218,6 @@
 
 
                     </StackPanel>-->
-                </Border>
-                <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
-                        CornerRadius="5" Padding="5" Background="white" Margin=" 0 10 10 10">
-                    <Button Style="{StaticResource addButton}" Content="Dodaj do koszyka" Click="dodaj_do_koszyka" HorizontalAlignment="Center" Height="NaN"/>
                 </Border>
 
             </Grid>

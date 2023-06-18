@@ -21,6 +21,7 @@ namespace Moderator
     /// </summary>
     public partial class register : Window
     {
+        public string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
         public register()
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace Moderator
 
             if (password.Password == password2.Password)
             {
-                string Myconnect = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
+                
                 string query = " INSERT INTO `mydb`.`users_data`" +
                     " (`id_user`, `name`, `surname`, `e_maill`, `rola` ) VALUES " +
                     "\r\n('" + this.id_user_n.Text + "', '" + this.name_user.Text + "', '" + this.surname_user.Text + "', '" + this.mail.Text + "', '" + rola + "'); ";

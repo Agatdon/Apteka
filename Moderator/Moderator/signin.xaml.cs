@@ -91,6 +91,9 @@ namespace Moderator
             else if(role=="klient")
             {
                 // tu będzie strona klienta
+                client_med newpage = new client_med();
+                newpage.Show();
+                this.Close();
             }
 
         }

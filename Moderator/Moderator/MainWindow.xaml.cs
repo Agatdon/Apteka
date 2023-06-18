@@ -91,6 +91,13 @@ namespace Moderator
             newpage.Show();
             this.Close();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            signin newpage = new signin();
+            newpage.Show();
+            this.Close();
+        }
     }
     public class UserData
     {

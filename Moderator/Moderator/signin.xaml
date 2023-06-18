@@ -47,21 +47,11 @@
                         VerticalAlignment="Top">
                     <TextBlock FontSize="46"
                            FontWeight="Light"
-                           Text="Zapisz"
+                           Text="Zaloguj"
                            Foreground="white"
                            TextAlignment="Center"/>
 
-                    <TextBlock FontWeight="Light"
-                           FontSize="16"
-                           Foreground="#d1f2eb"
-                           TextAlignment="Center"
-                           Text="to use"
-                           Margin="0 15 0 3"/>
-                    <TextBlock FontSize="16"
-                           FontWeight="Light"
-                           Text="Zapisz"
-                           Foreground="#d1f2eb"
-                           TextAlignment="Center"/>
+                 
 
                 </StackPanel>
                 <!-- elipse-->
@@ -84,9 +74,9 @@
                         <Ellipse Width="100"
                                  Height="100"
                                  StrokeThickness="4">
-                            <!--<Ellipse.Fill>-->
-                                <!--<ImageBrush ImageSource="/Images/logo.png"/>-->
-                            <!--</Ellipse.Fill>-->
+                            <!--<Ellipse.Fill>
+                                <ImageBrush ImageSource="C:\Users\Hona1\Desktop\aktualne\Apteka-register\Apteka-register\Moderator\Moderator\Images\logo.png"/>
+                            </Ellipse.Fill>-->
                         </Ellipse>
                     </Grid>
 
@@ -115,7 +105,7 @@
 
 
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Zapisz"
+                        <Button Content="Zaloguj"
                                         Background="#05b790"
                                         Foreground="white"
                                         FontSize="18"

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moderator" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="history" Height="450" Width="800">
+        Title="history" Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
@@ -28,16 +28,16 @@
                 <Button  Margin="20 28 0 35" Style="{StaticResource topButton}">
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
-                <Border Background="Azure" CornerRadius="0 50 0 30" Margin="0,58,0,0" Grid.RowSpan="2">
+                <Border Grid.Row="1" Background="Azure" CornerRadius="0 50 0 30">
                     <DockPanel>
                         <!-- menu logo-->
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
-                            <Ellipse>
+                            <!--<Ellipse>
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Images/logo.png"/>
                                 </Ellipse.Fill>
-                            </Ellipse>
+                            </Ellipse> -->
                         </Border>
                         <!-- menu title-->
                         <TextBlock Text="Apteka" Foreground="Black" FontSize="22" FontWeight="SemiBold"
@@ -45,30 +45,22 @@
                         <TextBlock Text="Panel Klineta" Foreground="Gray" FontSize="14" FontWeight="SemiBold"
                                    DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
                         <!-- mneu separator-->
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#7e5fdc"/>
 
                         <!-- menu buttons-->
                         <StackPanel DockPanel.Dock="Top">
                             <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Lista leków"/>
                                 </StackPanel>
                             </Button>
 
-                            <!--Ponizej jesli sie odkomentyje to bedzie aktywny przycisk-->
-
-                            <!--<Button x:Name="bt_baskey" Style="{StaticResource menuButton}" Click="Bt_baskey_Click">
+                            <Button x:Name="bt_baskey" Style="{StaticResource menuButton}" Click="bt_baskey_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Basket"  Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Koszyk"/>
-                                </StackPanel>
-                            </Button>-->
-
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Basket"  Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Historia"/>
                                 </StackPanel>
                             </Button>
 
@@ -79,7 +71,7 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click_1">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout"  Style="{StaticResource menuButtonIcon}"/>
                                 <TextBlock Text="Wyloguj"/>
@@ -116,8 +108,7 @@
                 <TextBlock Text="Dokonane realizacje" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
                            HorizontalAlignment="Left" Foreground="#121518"/>
 
-                <!-- add buton-->
-                <!--
+                <!-- add buton--><!--
                 <Button Style="{StaticResource addButton}">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
@@ -147,8 +138,6 @@
                     <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>
                 </Grid>-->
 
-                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds"/>
-
                 <!-- separator-->
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
                 <!-- tab buttons-->
@@ -159,20 +148,17 @@
                     <Button Content="Cena" Style="{StaticResource tabButton}"/>
                 </StackPanel>
 
-                <!--  pharmacy datagrid--><!--
+                <!--  pharmacy datagrid-->
+                <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                        CornerRadius="5" Padding="5" Background="white" Margin=" 0 10 10 10">
+                    <Button Style="{StaticResource addButton}" Content="Pobierz PDF" Click="delete_medicin" HorizontalAlignment="Center" Height="NaN"/>
+                </Border>
 
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid" SelectionChanged="pharmacyDataGrid_SelectionChanged">
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="pharmacyDataGrid" >
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
+                        
 
-
-                        <DataGridTemplateColumn Header="Nazwa leku" IsReadOnly="True" Width="*">
+                        <!--<DataGridTemplateColumn Header="Nazwa leku" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -184,12 +170,12 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Substancja czynna" IsReadOnly="True" Width="*" Binding="{Binding srodek}"/>
-                        <DataGridTextColumn Header="Postac" IsReadOnly="True" Width="*" Binding="{Binding dawka}"/>
-                        <DataGridTextColumn Header="Cena" IsReadOnly="True" Width="*" Binding="{Binding cena}"/>
+                        </DataGridTemplateColumn>-->
+                        <DataGridTextColumn Header="Numer zamówiena" IsReadOnly="True" Width="*" Binding="{Binding idorders}"/>
+                        <DataGridTextColumn Header="Nazwa leku" IsReadOnly="True" Width="*" Binding="{Binding name_mecinin}"/>
+                        <DataGridTextColumn Header="Data zamówienia" IsReadOnly="True" Width="*" Binding="{Binding date}"/>
 
-                        --><!--<DataGridTemplateColumn Header="Dodaj do koszyka" IsReadOnly="True" Width="*">
+                        <!--<DataGridTemplateColumn Header="Dodaj do koszyka" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -202,10 +188,10 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>--><!--
-                    </DataGrid.Columns>-->
+                        </DataGridTemplateColumn>-->
+                    </DataGrid.Columns>
 
-                <!--</DataGrid>-->
+                </DataGrid>
                 <!-- pagination section-->
 
                 <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
