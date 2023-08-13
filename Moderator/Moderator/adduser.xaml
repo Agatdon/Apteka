@@ -104,7 +104,13 @@
                                            Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right" />-->
                 </Grid>
                 <!--top buttons -->
-                
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc" HorizontalAlignment="Right">
+                    <Icon:PackIconMaterial Kind="Cog"/>
+                </Button>
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 55 0" HorizontalAlignment="Right" >
+                    <Icon:PackIconMaterial Kind="Bell"/>
+                </Button>
                 <!-- Page title-->
                 <TextBlock Text="Dodaj użytkownika" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
                            HorizontalAlignment="Left" Foreground="#121518"/>
@@ -142,7 +148,8 @@
 
                     <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>-->
                 </Grid>
-                
+                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds"/>
+
                 <!--  user datagrid-->
                 <Grid Grid.Row="5">
                     <StackPanel VerticalAlignment="Center"

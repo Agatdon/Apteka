@@ -143,7 +143,8 @@
 
                     <TextBox x:Name="txtFilter" Style="{StaticResource textboxFilter}"/>-->
                 </Grid>
-               
+                <CheckBox Style="{DynamicResource CheckBoxStyle1}" Grid.Row="6" Content="asds"/>
+
                 <!--  pharmacy datagrid-->
 
                 <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="userDataGrid" >

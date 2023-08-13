@@ -94,7 +94,10 @@
                 </Grid.RowDefinitions>
                 <!-- search textbox-->
                 <Grid Width="300" HorizontalAlignment="Left">
-                    
+                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                               Panel.ZIndex="1" Text="Szukaj..."
+                               Visibility="{Binding ElementName=txtSearch, Converter={StaticResource BoolToVis}}"/>
+
 
                     <!--<TextBox x:Name="txtSearch" Style="{StaticResource textboxSearch}"/>-->
 
